@@ -1,0 +1,22 @@
+//SLIDING WINDOW TECHNIQUE//
+//CSES SUB ARRAY WITH MAXIMUM OF K DISTINCT VALUES,COMBINATORICS TYPE
+
+unordered_map<ll, ll> st;
+    ll l = 0, h = 0, ans = 0;// TWO POINTER SLIDING TECHNIQUE
+    while (h < n) 
+    {
+        st[v[h]]++;
+        while (st.size() > k)
+        {
+
+            st[v[l]]--;
+            if (st[v[l]] == 0)
+            {
+                st.erase(v[l]);
+            }
+            l++;
+        }
+        ans += h - l + 1;// EVERYTIME MEASURE THE LENGTH,LIKE A 3 LENGTH OF SUB ARRAY CONTAINS 3 DIFFERENT SUB ARRAY
+        h++;
+    }
+    cout << ans << endl;
